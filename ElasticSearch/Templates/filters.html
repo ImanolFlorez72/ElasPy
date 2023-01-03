@@ -1,0 +1,120 @@
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <title>Elastic</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    
+    function UpdateCheck(input){
+    
+      var hidden = document.querySelector(`#${input.name}`);
+      if(input.className === "ontrue"){
+        hidden.value = "true";
+      }
+      if(input.className === "onfalse"){
+        hidden.value = "false";
+      }
+      if(input.className === "onclear"){
+        hidden.value = "";
+      }
+  }
+    
+  </script>
+      <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+
+      
+      <!-- Custom styles for this template -->
+      
+    </head>
+    <body class="bg-light">
+      
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+       
+        <h2>{{indice}}</h2>
+       
+      </div>
+
+      <div id="formu">
+
+        <h4>Formulario</h4>
+        <form action="{% url 'descargar' %}" method="POST">
+          <input type="hidden" name="indexname" value="{{indice}}">
+        <div class="row g-3">
+        {% for key,value in parameters.items %} 
+         {% if value == "date" %}
+              <div class="col-sm-6">
+                <label for="{{key}}" class="form-label"><b>{{key}}</b></label>
+                <input type="date" class="form-control dateinput inputt" name="{{key}}" id="{{key}}">
+              </div>
+          {% endif %}
+
+          {% if value == "text" %}
+              <div class="col-sm-6">
+                <label for="{{key}}" class="form-label"><b>{{key}}</b></label>
+                <input type="text" class="form-control textinput inputt" name="{{key}}" id="{{key}}">
+              </div>
+          {% endif %}
+
+          {% if value == "boolean" %}
+              <div class="col-sm-6">
+                <label for="{{key}}" class="form-label"><b>{{key}}</b></label>  
+                    <input class="form-check-input booleaninput inputt" type="hidden" name="{{key}}" type="checkbox" id="{{key}}" >
+                <label for="Verdadero" class="form-label">Verdadero:</label>
+                    <input type="radio" name="{{key}}" class="ontrue" onclick="UpdateCheck(this)">
+                <label for="Falso" class="form-label">Falso:</label>
+                    <input type="radio" name="{{key}}" class="onfalse" onclick="UpdateCheck(this)">
+                <label for="Limpiar" class="form-label">Limpiar:</label>
+                    <input type="radio" name="{{key}}" class="onclear" onclick="UpdateCheck(this)">
+              </div>
+
+          {% endif %}
+
+          {% if value == "long" %}
+              <div class="col-sm-6">
+                <label for="{{key}}" class="form-label"><b>{{key}}</b></label>
+                <input type="long" class="form-control longinput inputt" name="{{key}}" id="{{key}}">
+              </div>
+          {% endif %}
+        {% endfor %}
+        
+        <div>
+          <input type="submit" class="btn btn-primary" id="send" value="Consultar">
+          <!--<input type="button" class="btn btn-primary" id="send" value="Consultar" onclick="checkHoroscope()">-->
+        </div>
+            <hr>
+        </div>
+
+          </div>
+            </form>
+      </div>
+
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Grupo Adapting América S.A.S</p>
+      
+    </footer>
+  </div>
+    </body>
+  </html>

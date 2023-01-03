@@ -1,0 +1,16 @@
+asgiref==3.5.2
+certifi==2022.9.24
+Django==4.1.2
+django-attachments==1.9.1
+django-mathfilters==1.0.0
+elastic-transport==7.15.0
+elasticsearch==7.15.0
+mock==5.0.0
+numpy==1.23.3
+pandas==1.5.0
+python-dateutil==2.8.2
+pytz==2022.4
+six==1.16.0
+sqlparse==0.4.3
+tzdata==2022.4
+urllib3==1.26.12

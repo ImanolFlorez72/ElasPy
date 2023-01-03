@@ -1,0 +1,65 @@
+
+<!doctype html>
+{% load static %}
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+ 
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Cards</title>
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+        .target {
+    display: grid; 
+}
+      } 
+
+    </style>
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+<div class="container target">
+        <div class="row align-items-start">  
+  {% for i in List %}
+
+    <div class="col">
+    <div class="card" >
+     <img src="{% static 'ElasticSearch/img/logoOg.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 style="color:black" class="card-title">{{i}}</h5>
+        
+        <a href="{% url 'filters' index=i  %}" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    </div>
+  {% endfor %}
+
+  <a href="{% url 'descargar' %}">Descargar</a>
+    
+    
+
+
+  </div>
+</div> 
+  
+
+    
+  </body>
+</html>
